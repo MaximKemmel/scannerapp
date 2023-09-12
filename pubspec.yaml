@@ -1,11 +1,11 @@
 name: scanner_app
 description: ScannerApp
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
+  sdk: ">=3.1.1 <4.0.0"
 
 dependencies:
   flutter:
@@ -26,7 +26,7 @@ flutter:
   fonts:
     - family: GothamPro
       fonts:
-        - asset: assets/fonts/gothampro.ttf
+        - asset: assets/fonts/GothamPro/GothamPro.ttf
 
   assets:
     - assets/png/

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scanner_app/ui/screens/home/home.dart';
 import 'package:scanner_app/ui/screens/login/login.dart';
 import 'package:scanner_app/ui/screens/onboard/onboard.dart';
 import 'package:scanner_app/ui/screens/splash/splash.dart';
@@ -14,13 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Scanner App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors().backgroundColor,
       ),
-      home: const LoginScreen(),
+      home: const HomeScreen(),
     );
   }
 }

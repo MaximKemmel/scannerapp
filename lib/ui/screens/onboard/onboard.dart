@@ -12,9 +12,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
   PageController pageController = PageController();
 
   @override
-  var selectedIndex = 0;
-
   Widget build(BuildContext context) {
+    var selectedIndex = 0;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -64,14 +64,17 @@ class _OnboardScreenState extends State<OnboardScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ...List.generate(3, (index) =>
-                    AnimatedContainer(
+                  ...List.generate(
+                    3,
+                    (index) => AnimatedContainer(
                       duration: const Duration(milliseconds: 150),
                       margin: const EdgeInsets.symmetric(horizontal: 3),
                       width: index == selectedIndex ? 30 : 5,
                       height: 5,
                       decoration: BoxDecoration(
-                        color: index == selectedIndex ? AppColors().actionColor : AppColors().inactiveColor,
+                        color: index == selectedIndex
+                            ? AppColors().actionColor
+                            : AppColors().inactiveColor,
                         borderRadius: BorderRadius.circular(5),
                       ),
                     ),
@@ -104,7 +107,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
                       ),
                     ),
                     onPressed: () {
-                      pageController.previousPage(duration: const Duration(milliseconds: 150), curve: Curves.easeIn);
+                      pageController.previousPage(
+                        duration: const Duration(milliseconds: 150),
+                        curve: Curves.easeIn,
+                      );
                     },
                   ),
                   const SizedBox(width: 10),
@@ -128,7 +134,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
                       ),
                     ),
                     onPressed: () {
-                      pageController.nextPage(duration: const Duration(milliseconds: 150), curve: Curves.easeIn);
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 150),
+                        curve: Curves.easeIn,
+                      );
                     },
                   ),
                 ],
@@ -143,4 +152,3 @@ class _OnboardScreenState extends State<OnboardScreen> {
     );
   }
 }
-
