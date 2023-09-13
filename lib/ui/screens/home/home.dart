@@ -11,17 +11,21 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late bool isSearchFieldVisible;
   late int selectedIndex;
+  late int selectedTab = 0;
   PageController pageController = PageController();
 
   @override
   void initState() {
     isSearchFieldVisible = false;
     selectedIndex = 0;
+    selectedTab = 0;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    TabController tabController = TabController(length: 2, vsync: this);
+
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -55,157 +59,311 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: selectedIndex == 0
-                        ? AppColors().actionColor
-                        : AppColors().actionLightColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    elevation: 0,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: SizedBox(
+                height: 36,
+                child: TabBar(
+                  controller: tabController,
+                  physics: const ClampingScrollPhysics(),
+                  labelColor: AppColors().backgroundColor,
+                  unselectedLabelColor: AppColors().actionColor,
+                  isScrollable: true,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 5),
+                  indicatorWeight: 0,
+                  indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: AppColors().actionColor,
                   ),
-                  child: Text(
-                    "Сканирование",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      color: selectedIndex == 0
-                          ? AppColors().backgroundColor
-                          : AppColors().actionColor,
+                  dividerColor: Colors.transparent,
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(
+                            color: AppColors().actionColor,
+                            width: 1,
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Сканирование",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  onPressed: () {
-                    pageController.animateToPage(
-                      0,
-                      duration: const Duration(milliseconds: 150),
-                      curve: Curves.easeIn,
-                    );
-                  },
+                    Tab(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(
+                            color: AppColors().actionColor,
+                            width: 1,
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Редактирование",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: selectedIndex == 1
-                        ? AppColors().actionColor
-                        : AppColors().actionLightColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    "Редактирование",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      color: selectedIndex == 1
-                          ? AppColors().backgroundColor
-                          : AppColors().actionColor,
-                    ),
-                  ),
-                  onPressed: () {
-                    pageController.animateToPage(
-                      1,
-                      duration: const Duration(milliseconds: 150),
-                      curve: Curves.easeIn,
-                    );
-                  },
-                ),
-              ],
+              ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              height: 260,
-              child: PageView.builder(
-                controller: pageController,
-                physics: const BouncingScrollPhysics(),
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return selectedIndex == 0 ? scanBlock() : editBlock();
-                },
-                onPageChanged: (index) {
-                  setState(() {
-                    selectedIndex = index;
-                  });
-                },
-              ),
-            ),
-            const SizedBox(height: 25),
-            Text(
-              "Последние файлы",
-              style: TextStyle(
-                fontFamily: "GothamPro",
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
-                color: AppColors().darkTextColor,
-              ),
-            ),
-            const SizedBox(height: 5),
             Expanded(
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: ((context, index) {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 20,
-                    ),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/png/doc.png',
-                          height: 67,
-                          width: 67,
+              child: TabBarView(
+                controller: tabController,
+                children: [
+                  ListView(
+                    children: [
+                      scanBlock(),
+                      const SizedBox(height: 25),
+                      Text(
+                        "Последние файлы",
+                        style: TextStyle(
+                          fontFamily: "GothamPro",
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          color: AppColors().darkTextColor,
                         ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                      const SizedBox(height: 5),
+                      for (int i = 0; i < 5; i ++)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 20,
+                          ),
+                          child: Row(
                             children: [
-                              Text(
-                                "Scan 273648 two strokes",
-                                style: TextStyle(
-                                  fontFamily: "GothamPro",
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
-                                  color: AppColors().darkTextColor,
+                              Image.asset(
+                                'assets/png/doc.png',
+                                height: 67,
+                                width: 67,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Scan 273648 two strokes",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: AppColors().darkTextColor,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      "12/26/2023",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: AppColors().grayTextColor,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              const SizedBox(height: 5),
-                              Text(
-                                "12/26/2023",
-                                style: TextStyle(
-                                  fontFamily: "GothamPro",
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12,
-                                  color: AppColors().grayTextColor,
-                                ),
+                              IconButton(
+                                icon: Image.asset('assets/png/brush.png'),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/more.png'),
+                                onPressed: () {},
                               ),
                             ],
                           ),
                         ),
-                        IconButton(
-                          icon: Image.asset('assets/png/brush.png'),
-                          onPressed: () {},
+                      const SizedBox(height: 40),
+                    ],
+                  ),
+                  ListView(
+                    children: [
+                      editBlock(),
+                      const SizedBox(height: 25),
+                      Text(
+                        "Последние файлы",
+                        style: TextStyle(
+                          fontFamily: "GothamPro",
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          color: AppColors().darkTextColor,
                         ),
-                        IconButton(
-                          icon: Image.asset('assets/png/more.png'),
-                          onPressed: () {},
+                      ),
+                      const SizedBox(height: 5),
+                      for (int i = 0; i < 5; i ++)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 20,
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/png/doc.png',
+                                height: 67,
+                                width: 67,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Scan 273648 two strokes",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: AppColors().darkTextColor,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      "12/26/2023",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: AppColors().grayTextColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/brush.png'),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/more.png'),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  );
-                }),
+                      const SizedBox(height: 40),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
         ),
+      ),
+      floatingActionButton: selectedTab < 2 ? Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: AppColors().actionColor,
+            onPressed:(){},
+            child: Image.asset('assets/png/photo.png'),
+          ),
+          const SizedBox(width: 8),
+          FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: AppColors().actionColor,
+            onPressed:(){},
+            child: Image.asset('assets/png/image.png'),
+          ),
+        ],
+      ) : null,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors().backgroundColor,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: selectedTab,
+        selectedItemColor: AppColors().darkTextColor,
+        selectedLabelStyle: TextStyle(
+          fontFamily: "GothamPro",
+          fontWeight: FontWeight.w500,
+          fontSize: 10,
+          color: AppColors().actionColor,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontFamily: "GothamPro",
+          fontWeight: FontWeight.w500,
+          fontSize: 10,
+          color: AppColors().grayTextColor,
+        ),
+        items: [
+          BottomNavigationBarItem(
+            activeIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 5.0),
+              child: Image.asset('assets/png/home_active.png'),
+            ),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 5.0),
+              child: Image.asset('assets/png/home.png'),
+            ),
+            label: "Главная"
+          ),
+          BottomNavigationBarItem(
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Image.asset('assets/png/files_active.png'),
+              ),
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Image.asset('assets/png/files.png'),
+              ),
+              label: "Файлы"
+          ),
+          BottomNavigationBarItem(
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Image.asset('assets/png/premium.png'),
+              ),
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Image.asset('assets/png/premium.png'),
+              ),
+              label: "Премиум"
+          ),
+          BottomNavigationBarItem(
+              activeIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Image.asset('assets/png/settings_active.png'),
+              ),
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Image.asset('assets/png/settings.png'),
+              ),
+              label: "Настройки"
+          ),
+        ],
+        onTap: (index) {
+          if (selectedTab == index) return;
+          setState(() {
+            selectedTab = index;
+          });
+        },
       ),
     );
   }
