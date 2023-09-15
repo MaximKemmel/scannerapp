@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scanner_app/ui/screens/home/pages/files.dart';
 import 'package:scanner_app/ui/screens/home/pages/main.dart';
 import 'package:scanner_app/ui/screens/home/pages/premium.dart';
 import 'package:scanner_app/ui/screens/home/pages/settings.dart';
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen>{
   late int selectedTab = 0;
   static const List<Widget> pages = [
     MainPage(),
-    MainPage(),
+    FilesPage(),
     PremiumPage(),
     SettingsPage(),
   ];

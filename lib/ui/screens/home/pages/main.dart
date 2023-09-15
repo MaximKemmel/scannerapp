@@ -105,58 +105,67 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   ),
                   const SizedBox(height: 5),
                   for (int i = 0; i < 5; i ++)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
-                        vertical: 20,
-                      ),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            'assets/png/doc.png',
-                            height: 67,
-                            width: 67,
+                    Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 20,
                           ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Scan 273648 two strokes",
-                                  style: TextStyle(
-                                    fontFamily: "GothamPro",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: AppColors().darkTextColor,
-                                  ),
+                          decoration: BoxDecoration(
+                            color: AppColors().cardColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/png/doc.png',
+                                height: 67,
+                                width: 67,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Scan 273648 two strokes",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: AppColors().darkTextColor,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      "12/26/2023",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: AppColors().grayTextColor,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  "12/26/2023",
-                                  style: TextStyle(
-                                    fontFamily: "GothamPro",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12,
-                                    color: AppColors().grayTextColor,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/brush.png'),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/more.png'),
+                                onPressed: () {},
+                              ),
+                            ],
                           ),
-                          IconButton(
-                            icon: Image.asset('assets/png/brush.png'),
-                            onPressed: () {},
-                          ),
-                          IconButton(
-                            icon: Image.asset('assets/png/more.png'),
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 10),
+                      ],
                     ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 50),
                 ],
               ),
               ListView(
@@ -174,58 +183,67 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   ),
                   const SizedBox(height: 5),
                   for (int i = 0; i < 5; i ++)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
-                        vertical: 20,
-                      ),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            'assets/png/doc.png',
-                            height: 67,
-                            width: 67,
+                    Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 20,
                           ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Scan 273648 two strokes",
-                                  style: TextStyle(
-                                    fontFamily: "GothamPro",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: AppColors().darkTextColor,
-                                  ),
+                          decoration: BoxDecoration(
+                            color: AppColors().cardColor,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/png/doc.png',
+                                height: 67,
+                                width: 67,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Scan 273648 two strokes",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: AppColors().darkTextColor,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      "12/26/2023",
+                                      style: TextStyle(
+                                        fontFamily: "GothamPro",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: AppColors().grayTextColor,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  "12/26/2023",
-                                  style: TextStyle(
-                                    fontFamily: "GothamPro",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12,
-                                    color: AppColors().grayTextColor,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/brush.png'),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Image.asset('assets/png/more.png'),
+                                onPressed: () {},
+                              ),
+                            ],
                           ),
-                          IconButton(
-                            icon: Image.asset('assets/png/brush.png'),
-                            onPressed: () {},
-                          ),
-                          IconButton(
-                            icon: Image.asset('assets/png/more.png'),
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 10),
+                      ],
                     ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 50),
                 ],
               ),
             ],

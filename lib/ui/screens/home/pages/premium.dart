@@ -9,9 +9,11 @@ class PremiumPage extends StatefulWidget {
   State<PremiumPage> createState() => _PremiumPageState();
 }
 
-class _PremiumPageState extends State<PremiumPage> {
+class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
+    TabController tabController = TabController(length: 3, vsync: this);
+
     return Stack(
       children: [
         Image.asset(
@@ -115,6 +117,187 @@ class _PremiumPageState extends State<PremiumPage> {
                   border: Border.all(
                     color: AppColors().actionColor,
                   ),
+                ),
+                child: TabBar(
+                  controller: tabController,
+                  physics: const ClampingScrollPhysics(),
+                  labelColor: AppColors().backgroundColor,
+                  unselectedLabelColor: AppColors().darkTextColor,
+                  isScrollable: false,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 0),
+                  indicatorWeight: 0,
+                  indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: AppColors().actionColor,
+                  ),
+                  dividerColor: Colors.transparent,
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Пробная",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Годовая",
+                                style: TextStyle(
+                                  fontFamily: "GothamPro",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Container(
+                                height: 25,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: AppColors().backgroundColor,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "-83%",
+                                    style: TextStyle(
+                                      fontFamily: "GothamPro",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 8,
+                                      color: AppColors().darkTextColor
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Месячная",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 25),
+              SizedBox(
+                height: 25,
+                child: TabBarView(
+                  controller: tabController,
+                  children: const [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "2 390 ₽ /",
+                          style: TextStyle(
+                            fontFamily: "GothamPro",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Padding(
+                          padding: EdgeInsets.only(top: 6),
+                          child: Text(
+                            "199,17 ₽ в месяц",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "2 390 ₽ /",
+                          style: TextStyle(
+                            fontFamily: "GothamPro",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Padding(
+                          padding: EdgeInsets.only(top: 6),
+                          child: Text(
+                            "199,17 ₽ в месяц",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "2 390 ₽ /",
+                          style: TextStyle(
+                            fontFamily: "GothamPro",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Padding(
+                          padding: EdgeInsets.only(top: 6),
+                          child: Text(
+                            "199,17 \u{20BD} в месяц",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 40),

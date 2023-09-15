@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:scanner_app/ui/screens/premium/premium.dart';
+import 'package:scanner_app/ui/screens/support/support.dart';
 import 'package:scanner_app/ui/theme/color.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -75,6 +78,7 @@ class _SettingsPageState extends State<SettingsPage> {
               Expanded(
                 child: Row(
                   children: [
+                    const SizedBox(width: 5),
                     Image.asset('assets/png/info.png'),
                     const SizedBox(width: 10),
                     Flexible(
@@ -112,72 +116,93 @@ class _SettingsPageState extends State<SettingsPage> {
             ],
           ),
         ),
-        SizedBox(
-          height: 45,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Image.asset('assets/png/info.png'),
-                    const SizedBox(width: 10),
-                    Flexible(
-                      child: Text(
-                        "Поддержка",
-                        style: TextStyle(
-                          fontFamily: "GothamPro",
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: AppColors().darkTextColor,
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SupportScreen()));
+            },
+            child: SizedBox(
+              height: 45,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 5),
+                        Image.asset('assets/png/info.png'),
+                        const SizedBox(width: 10),
+                        Flexible(
+                          child: Text(
+                            "Поддержка",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: AppColors().darkTextColor,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: AppColors().inactiveColor,
+                  ),
+                ],
               ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppColors().inactiveColor,
+            ),
+          ),
+        ),
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const PremiumScreen()));
+            },
+            child: SizedBox(
+              height: 45,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 5),
+                        Image.asset('assets/png/info.png'),
+                        const SizedBox(width: 10),
+                        Flexible(
+                          child: Text(
+                            "Премиум подписка",
+                            style: TextStyle(
+                              fontFamily: "GothamPro",
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: AppColors().darkTextColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: AppColors().inactiveColor,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
         SizedBox(
           height: 45,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Image.asset('assets/png/info.png'),
-                    const SizedBox(width: 10),
-                    Flexible(
-                      child: Text(
-                        "Премиум подписка",
-                        style: TextStyle(
-                          fontFamily: "GothamPro",
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: AppColors().darkTextColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppColors().inactiveColor,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 45,
-          child: Row(
-            children: [
+              const SizedBox(width: 5),
               Image.asset('assets/png/info.png'),
               const SizedBox(width: 10),
               Flexible(
@@ -194,24 +219,39 @@ class _SettingsPageState extends State<SettingsPage> {
             ],
           ),
         ),
-        SizedBox(
-          height: 45,
-          child: Row(
-            children: [
-              Image.asset('assets/png/info.png'),
-              const SizedBox(width: 10),
-              Flexible(
-                child: Text(
-                  "Поделиться приложением",
-                  style: TextStyle(
-                    fontFamily: "GothamPro",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: AppColors().darkTextColor,
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(5),
+            onTap: () async {
+              await FlutterShare.share(
+                title: 'Title',
+                text: 'Text',
+                linkUrl: 'https://flutter.dev/',
+                chooserTitle: 'Chooser title',
+              );
+            },
+            child: SizedBox(
+              height: 45,
+              child: Row(
+                children: [
+                  const SizedBox(width: 5),
+                  Image.asset('assets/png/info.png'),
+                  const SizedBox(width: 10),
+                  Flexible(
+                    child: Text(
+                      "Поделиться приложением",
+                      style: TextStyle(
+                        fontFamily: "GothamPro",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: AppColors().darkTextColor,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
         Material(
@@ -312,6 +352,7 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 45,
               child: Row(
                 children: [
+                  const SizedBox(width: 5),
                   Image.asset('assets/png/info_active.png'),
                   const SizedBox(width: 10),
                   Flexible(

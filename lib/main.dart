@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Scanner App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        dividerColor: Colors.transparent,
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors().backgroundColor,
       ),
