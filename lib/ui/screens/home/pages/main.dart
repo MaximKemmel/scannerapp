@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../theme/color.dart';
 
@@ -47,12 +48,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         width: 1,
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Сканирование",
-                        style: TextStyle(
-                          fontFamily: "GothamPro",
-                          fontWeight: FontWeight.w400,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                       ),
@@ -61,7 +61,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 ),
                 Tab(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(
@@ -69,12 +70,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         width: 1,
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Редактирование",
-                        style: TextStyle(
-                          fontFamily: "GothamPro",
-                          fontWeight: FontWeight.w400,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                       ),
@@ -96,15 +96,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   const SizedBox(height: 25),
                   Text(
                     "Последние файлы",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                       color: AppColors().darkTextColor,
                     ),
                   ),
                   const SizedBox(height: 5),
-                  for (int i = 0; i < 5; i ++)
+                  for (int i = 0; i < 5; i++)
                     Column(
                       children: [
                         Container(
@@ -127,13 +126,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       "Scan 273648 two strokes",
-                                      style: TextStyle(
-                                        fontFamily: "GothamPro",
-                                        fontWeight: FontWeight.w500,
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w400,
                                         fontSize: 14,
                                         color: AppColors().darkTextColor,
                                       ),
@@ -141,9 +140,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                     const SizedBox(height: 5),
                                     Text(
                                       "12/26/2023",
-                                      style: TextStyle(
-                                        fontFamily: "GothamPro",
-                                        fontWeight: FontWeight.w500,
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w400,
                                         fontSize: 12,
                                         color: AppColors().grayTextColor,
                                       ),
@@ -174,15 +172,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   const SizedBox(height: 25),
                   Text(
                     "Последние файлы",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                       color: AppColors().darkTextColor,
                     ),
                   ),
                   const SizedBox(height: 5),
-                  for (int i = 0; i < 5; i ++)
+                  for (int i = 0; i < 5; i++)
                     Column(
                       children: [
                         Container(
@@ -205,13 +202,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       "Scan 273648 two strokes",
-                                      style: TextStyle(
-                                        fontFamily: "GothamPro",
-                                        fontWeight: FontWeight.w500,
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w400,
                                         fontSize: 14,
                                         color: AppColors().darkTextColor,
                                       ),
@@ -219,9 +216,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                     const SizedBox(height: 5),
                                     Text(
                                       "12/26/2023",
-                                      style: TextStyle(
-                                        fontFamily: "GothamPro",
-                                        fontWeight: FontWeight.w500,
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w400,
                                         fontSize: 12,
                                         color: AppColors().grayTextColor,
                                       ),
@@ -285,8 +281,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   Widget makeScanButton(
       {required String text,
-        required Color textColor,
-        required Color buttonColor}) {
+      required Color textColor,
+      required Color buttonColor}) {
     return Stack(
       children: [
         Container(
@@ -301,8 +297,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             children: [
               Text(
                 text,
-                style: TextStyle(
-                  fontFamily: "GothamPro",
+                style: GoogleFonts.inter(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
                   color: textColor,
@@ -401,8 +396,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   Widget makeEditButton(
       {required String text,
-        required String iconAsset,
-        required Color buttonColor}) {
+      required String iconAsset,
+      required Color buttonColor}) {
     return Stack(
       children: [
         Container(
@@ -427,8 +422,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               const SizedBox(width: 10),
               Text(
                 text,
-                style: TextStyle(
-                  fontFamily: "GothamPro",
+                style: GoogleFonts.inter(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
                   color: AppColors().darkTextColor,

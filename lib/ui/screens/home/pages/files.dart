@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../theme/color.dart';
 
@@ -19,8 +20,7 @@ class _FilesPageState extends State<FilesPage> {
           children: [
             Text(
               "Всего: 35 файлов",
-              style: TextStyle(
-                fontFamily: "GothamPro",
+              style: GoogleFonts.inter(
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
                 color: AppColors().darkTextColor,
@@ -40,9 +40,12 @@ class _FilesPageState extends State<FilesPage> {
                         isScrollControlled: true,
                         builder: (BuildContext context) {
                           return Padding(
-                            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               width: MediaQuery.of(context).size.width,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,17 +61,16 @@ class _FilesPageState extends State<FilesPage> {
                                         height: 5,
                                         width: 36,
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: AppColors().inactiveColor
-                                        ),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            color: AppColors().inactiveColor),
                                       ),
                                     ),
                                   ),
                                   const SizedBox(height: 20),
                                   Text(
                                     "Новая папка",
-                                    style: TextStyle(
-                                      fontFamily: "GothamPro",
+                                    style: GoogleFonts.inter(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 20,
                                       color: AppColors().darkTextColor,
@@ -77,8 +79,7 @@ class _FilesPageState extends State<FilesPage> {
                                   const SizedBox(height: 15),
                                   Text(
                                     "Название папки",
-                                    style: TextStyle(
-                                      fontFamily: "GothamPro",
+                                    style: GoogleFonts.inter(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
                                       color: AppColors().grayTextColor,
@@ -114,13 +115,18 @@ class _FilesPageState extends State<FilesPage> {
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                       elevation: 0,
-                                      minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 65),
-                                      maximumSize: Size(MediaQuery.of(context).size.width * 0.9, 65),
+                                      minimumSize: Size(
+                                          MediaQuery.of(context).size.width *
+                                              0.9,
+                                          65),
+                                      maximumSize: Size(
+                                          MediaQuery.of(context).size.width *
+                                              0.9,
+                                          65),
                                     ),
                                     child: Text(
                                       "Создать",
-                                      style: TextStyle(
-                                        fontFamily: "GothamPro",
+                                      style: GoogleFonts.inter(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 16,
                                         color: AppColors().backgroundColor,
@@ -145,7 +151,7 @@ class _FilesPageState extends State<FilesPage> {
                   height: 40,
                   child: IconButton(
                     padding: EdgeInsets.zero,
-                    onPressed: (){},
+                    onPressed: () {},
                     icon: Image.asset('assets/png/filter.png'),
                   ),
                 ),
@@ -157,7 +163,66 @@ class _FilesPageState extends State<FilesPage> {
         Expanded(
           child: ListView(
             children: [
-              for (int i = 0; i < 5; i ++)
+              for (int i = 0; i < 2; i++)
+                Column(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors().cardColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/png/folder_with_files.png',
+                              height: 67,
+                              width: 67,
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Название папки",
+                                    style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: AppColors().darkTextColor,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    "1 объект",
+                                    style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      color: AppColors().grayTextColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                              icon: Image.asset('assets/png/more.png'),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              for (int i = 0; i < 5; i++)
                 Column(
                   children: [
                     Container(
@@ -184,8 +249,7 @@ class _FilesPageState extends State<FilesPage> {
                               children: [
                                 Text(
                                   "Scan 273648 two strokes",
-                                  style: TextStyle(
-                                    fontFamily: "GothamPro",
+                                  style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
                                     color: AppColors().darkTextColor,
@@ -194,8 +258,7 @@ class _FilesPageState extends State<FilesPage> {
                                 const SizedBox(height: 5),
                                 Text(
                                   "12/26/2023",
-                                  style: TextStyle(
-                                    fontFamily: "GothamPro",
+                                  style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12,
                                     color: AppColors().grayTextColor,

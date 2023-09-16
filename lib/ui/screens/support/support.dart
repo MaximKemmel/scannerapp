@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../theme/color.dart';
 
@@ -36,8 +37,7 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
         title: Text(
           "Поддержка",
-          style: TextStyle(
-            fontFamily: "GothamPro",
+          style: GoogleFonts.inter(
             fontWeight: FontWeight.w400,
             fontSize: 16,
             color: AppColors().darkTextColor,
@@ -83,13 +83,14 @@ class _SupportScreenState extends State<SupportScreen> {
                       tilePadding: const EdgeInsets.symmetric(horizontal: 15),
                       collapsedShape: const Border(),
                       trailing: Icon(
-                        tilesStatus[index] ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined,
+                        tilesStatus[index]
+                            ? Icons.arrow_drop_up_outlined
+                            : Icons.arrow_drop_down_outlined,
                         color: AppColors().actionColor,
                       ),
                       title: Text(
                         "Короткий вопрос в одну строку",
-                        style: TextStyle(
-                          fontFamily: "GothamPro",
+                        style: GoogleFonts.inter(
                           fontWeight: FontWeight.w400,
                           fontSize: 15,
                           color: AppColors().darkTextColor,
@@ -97,11 +98,11 @@ class _SupportScreenState extends State<SupportScreen> {
                       ),
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
                           child: Text(
                             "Какой-то текст с ответом на вопрос, на сколько-то строк для наглядности как это будет выглядеть",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                               color: AppColors().grayTextColor,

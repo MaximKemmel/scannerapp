@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scanner_app/ui/screens/home/home.dart';
-import 'package:scanner_app/ui/screens/login/login.dart';
-import 'package:scanner_app/ui/screens/onboard/onboard.dart';
 import 'package:scanner_app/ui/screens/splash/splash.dart';
 import 'package:scanner_app/ui/theme/color.dart';
 
@@ -22,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors().backgroundColor,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../theme/color.dart';
 
@@ -9,7 +10,8 @@ class PremiumPage extends StatefulWidget {
   State<PremiumPage> createState() => _PremiumPageState();
 }
 
-class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixin{
+class _PremiumPageState extends State<PremiumPage>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
@@ -28,11 +30,10 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
             children: [
               Text(
                 "Выберите план",
-                style: TextStyle(
+                style: GoogleFonts.inter(
                   decoration: TextDecoration.underline,
                   decorationColor: AppColors().actionColor,
                   decorationThickness: 3,
-                  fontFamily: "GothamPro",
                   fontWeight: FontWeight.w700,
                   fontSize: 29,
                   shadows: [
@@ -51,8 +52,7 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                   const SizedBox(width: 15),
                   Text(
                     "Экспорт без ограничения",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                       color: AppColors().darkTextColor,
@@ -67,8 +67,7 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                   const SizedBox(width: 15),
                   Text(
                     "Нет рекламы",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                       color: AppColors().darkTextColor,
@@ -83,8 +82,7 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                   const SizedBox(width: 15),
                   Text(
                     "Многостраничное сканирование",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                       color: AppColors().darkTextColor,
@@ -99,8 +97,7 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                   const SizedBox(width: 15),
                   Text(
                     "Электронная подпись документа",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
                       color: AppColors().darkTextColor,
@@ -138,11 +135,10 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             "Пробная",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                             ),
@@ -160,10 +156,9 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              Text(
                                 "Годовая",
-                                style: TextStyle(
-                                  fontFamily: "GothamPro",
+                                style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
                                 ),
@@ -179,11 +174,10 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                                 child: Center(
                                   child: Text(
                                     "-83%",
-                                    style: TextStyle(
-                                      fontFamily: "GothamPro",
+                                    style: GoogleFonts.inter(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 8,
-                                      color: AppColors().darkTextColor
+                                      color: AppColors().darkTextColor,
                                     ),
                                   ),
                                 ),
@@ -198,11 +192,10 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             "Месячная",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                             ),
@@ -218,26 +211,24 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                 height: 25,
                 child: TabBarView(
                   controller: tabController,
-                  children: const [
+                  children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
                           "2 390 ₽ /",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
+                          style: GoogleFonts.inter(
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Padding(
-                          padding: EdgeInsets.only(top: 6),
+                          padding: const EdgeInsets.only(top: 6),
                           child: Text(
                             "199,17 ₽ в месяц",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
                             ),
@@ -251,19 +242,17 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                       children: [
                         Text(
                           "2 390 ₽ /",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
+                          style: GoogleFonts.inter(
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Padding(
-                          padding: EdgeInsets.only(top: 6),
+                          padding: const EdgeInsets.only(top: 6),
                           child: Text(
                             "199,17 ₽ в месяц",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
                             ),
@@ -277,19 +266,17 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                       children: [
                         Text(
                           "2 390 ₽ /",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
+                          style: GoogleFonts.inter(
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
                         ),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Padding(
-                          padding: EdgeInsets.only(top: 6),
+                          padding: const EdgeInsets.only(top: 6),
                           child: Text(
                             "199,17 \u{20BD} в месяц",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
                             ),
@@ -308,13 +295,14 @@ class _PremiumPageState extends State<PremiumPage>  with TickerProviderStateMixi
                     borderRadius: BorderRadius.circular(15),
                   ),
                   elevation: 0,
-                  minimumSize: Size(MediaQuery.of(context).size.width * 0.9, 65),
-                  maximumSize: Size(MediaQuery.of(context).size.width * 0.9, 65),
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * 0.9, 65),
+                  maximumSize:
+                      Size(MediaQuery.of(context).size.width * 0.9, 65),
                 ),
                 child: Text(
                   "Оформить",
-                  style: TextStyle(
-                    fontFamily: "GothamPro",
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
                     color: AppColors().backgroundColor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:scanner_app/ui/screens/premium/premium.dart';
 import 'package:scanner_app/ui/screens/support/support.dart';
 import 'package:scanner_app/ui/theme/color.dart';
@@ -41,8 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   Text(
                     "Наталья Пушкина",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                       color: AppColors().darkTextColor,
@@ -50,8 +50,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   Text(
                     "test@gmail.com",
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
                       color: AppColors().grayTextColor,
@@ -84,8 +83,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Flexible(
                       child: Text(
                         "Разрешить \npush-уведомления",
-                        style: TextStyle(
-                          fontFamily: "GothamPro",
+                        style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
                           color: AppColors().darkTextColor,
@@ -121,7 +119,10 @@ class _SettingsPageState extends State<SettingsPage> {
           child: InkWell(
             borderRadius: BorderRadius.circular(5),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const SupportScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SupportScreen()));
             },
             child: SizedBox(
               height: 45,
@@ -137,8 +138,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         Flexible(
                           child: Text(
                             "Поддержка",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
                               color: AppColors().darkTextColor,
@@ -161,8 +161,11 @@ class _SettingsPageState extends State<SettingsPage> {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(5),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const PremiumScreen()));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PremiumScreen()));
             },
             child: SizedBox(
               height: 45,
@@ -178,8 +181,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         Flexible(
                           child: Text(
                             "Премиум подписка",
-                            style: TextStyle(
-                              fontFamily: "GothamPro",
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
                               color: AppColors().darkTextColor,
@@ -208,8 +210,7 @@ class _SettingsPageState extends State<SettingsPage> {
               Flexible(
                 child: Text(
                   "Оценить приложение",
-                  style: TextStyle(
-                    fontFamily: "GothamPro",
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
                     color: AppColors().darkTextColor,
@@ -241,8 +242,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   Flexible(
                     child: Text(
                       "Поделиться приложением",
-                      style: TextStyle(
-                        fontFamily: "GothamPro",
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
                         color: AppColors().darkTextColor,
@@ -276,16 +276,14 @@ class _SettingsPageState extends State<SettingsPage> {
                             height: 5,
                             width: 36,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: AppColors().inactiveColor
-                            ),
+                                borderRadius: BorderRadius.circular(5),
+                                color: AppColors().inactiveColor),
                           ),
                         ),
                         const SizedBox(height: 40),
                         Text(
                           "Вы уверены, что хотите выйти",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
+                          style: GoogleFonts.inter(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
                             color: AppColors().darkTextColor,
@@ -307,8 +305,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Text(
                                 "Отмена",
-                                style: TextStyle(
-                                  fontFamily: "GothamPro",
+                                style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                   color: AppColors().actionColor,
@@ -331,8 +328,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               ),
                               child: Text(
                                 "Выйти",
-                                style: TextStyle(
-                                  fontFamily: "GothamPro",
+                                style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                   color: AppColors().backgroundColor,
@@ -358,8 +354,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   Flexible(
                     child: Text(
                       "Выйти",
-                      style: TextStyle(
-                        fontFamily: "GothamPro",
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
                         color: AppColors().actionColor,

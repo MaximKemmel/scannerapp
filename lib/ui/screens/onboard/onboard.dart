@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'package:scanner_app/ui/screens/login/login.dart';
 import 'package:scanner_app/ui/theme/color.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -10,11 +13,16 @@ class OnboardScreen extends StatefulWidget {
 
 class _OnboardScreenState extends State<OnboardScreen> {
   PageController pageController = PageController();
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    selectedIndex = 0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var selectedIndex = 0;
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -32,8 +40,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                       children: [
                         Text(
                           "Заголовок",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
+                          style: GoogleFonts.inter(
                             fontSize: 24,
                             fontWeight: FontWeight.w500,
                             color: AppColors().textColor,
@@ -43,10 +50,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         Text(
                           "Текст описание в несколько строк о приложении его преимуществах и тд.",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
+                          style: GoogleFonts.inter(
                             fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w400,
                             color: AppColors().textColor,
                           ),
                         ),
@@ -99,8 +105,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ),
                     child: Text(
                       "Пропустить",
-                      style: TextStyle(
-                        fontFamily: "GothamPro",
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                         color: AppColors().actionColor,
@@ -126,8 +131,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ),
                     child: Text(
                       "Дальше",
-                      style: TextStyle(
-                        fontFamily: "GothamPro",
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                         color: AppColors().backgroundColor,
@@ -138,6 +142,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         duration: const Duration(milliseconds: 150),
                         curve: Curves.easeIn,
                       );
+                      if (selectedIndex == 2) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen()));
+                      }
                     },
                   ),
                 ],

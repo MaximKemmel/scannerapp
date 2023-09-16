@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:scanner_app/ui/screens/home/home.dart';
 
-import '../../theme/color.dart';
+import 'package:scanner_app/ui/theme/color.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,8 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     "Добро пожаловать в...",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "GothamPro",
+                    style: GoogleFonts.inter(
                       fontSize: 24,
                       fontWeight: FontWeight.w500,
                       color: AppColors().textColor,
@@ -42,11 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(35),
-
                       ),
                       elevation: 0,
-                      minimumSize: Size(MediaQuery.of(context).size.width * 0.8, 55),
-                      maximumSize: Size(MediaQuery.of(context).size.width * 0.8, 55),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width * 0.8, 55),
+                      maximumSize:
+                          Size(MediaQuery.of(context).size.width * 0.8, 55),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -59,16 +61,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(width: 15),
                         Text(
                           "Продолжить с Google",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
-                            fontWeight: FontWeight.w500,
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
                             fontSize: 14,
                             color: AppColors().darkTextColor,
                           ),
                         ),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    },
                   ),
                   const SizedBox(height: 15),
                   OutlinedButton(
@@ -82,8 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(35),
                       ),
                       elevation: 0,
-                      minimumSize: Size(MediaQuery.of(context).size.width * 0.8, 55),
-                      maximumSize: Size(MediaQuery.of(context).size.width * 0.8, 55),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width * 0.8, 55),
+                      maximumSize:
+                          Size(MediaQuery.of(context).size.width * 0.8, 55),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -96,24 +104,27 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(width: 15),
                         Text(
                           "Продолжить с Apple",
-                          style: TextStyle(
-                            fontFamily: "GothamPro",
-                            fontWeight: FontWeight.w500,
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
                             fontSize: 14,
                             color: AppColors().darkTextColor,
                           ),
                         ),
                       ],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    },
                   ),
                 ],
               ),
               Text(
                 "Продолжая, вы соглашаетесь с политикой конфиденциальности",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: "GothamPro",
+                style: GoogleFonts.inter(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: AppColors().grayTextColor,
