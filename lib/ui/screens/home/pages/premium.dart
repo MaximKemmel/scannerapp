@@ -18,9 +18,13 @@ class _PremiumPageState extends State<PremiumPage>
 
     return Stack(
       children: [
-        Image.asset(
-          'assets/png/premium_background.png',
-          width: MediaQuery.of(context).size.width,
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/png/premium_background.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(15),
@@ -208,7 +212,7 @@ class _PremiumPageState extends State<PremiumPage>
               ),
               const SizedBox(height: 25),
               SizedBox(
-                height: 25,
+                height: 30,
                 child: TabBarView(
                   controller: tabController,
                   children: [
