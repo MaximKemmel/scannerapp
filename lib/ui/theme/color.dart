@@ -2,8 +2,9 @@ import 'dart:ui';
 
 class AppColors {
   final Color backgroundColor = const Color.fromRGBO(255, 255, 255, 1);
-  final Color actionColor = const Color.fromRGBO(255, 102, 46, 1);
-  final Color actionLightColor = const Color.fromRGBO(255, 232, 223, 1);
+  final Color actionColor = const Color.fromRGBO(68, 120, 255, 1);
+  final Color actionLightColor = const Color.fromRGBO(239, 242, 254, 1);
+  final Color exitColor = const Color.fromRGBO(255, 75, 86, 1);
   final Color textFieldColor = const Color.fromRGBO(230, 234, 238, 1);
   final Color cardColor = const Color.fromRGBO(250, 250, 250, 1);
   final Color inactiveColor = const Color.fromRGBO(204, 214, 222, 1);

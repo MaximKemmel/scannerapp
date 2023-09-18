@@ -44,13 +44,26 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "Logo",
-          style: GoogleFonts.inter(
-            fontSize: 66,
-            fontWeight: FontWeight.w700,
-            color: AppColors().textColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(height: 25),
+              Text(
+                "Logo",
+                style: GoogleFonts.inter(
+                  fontSize: 66,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors().textColor,
+                ),
+              ),
+              CircularProgressIndicator(
+                color: AppColors().actionColor,
+              ),
+            ],
           ),
         ),
       ),

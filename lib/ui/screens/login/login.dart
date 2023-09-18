@@ -19,9 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const SizedBox(height: 25),
               Column(
                 children: [
                   Text(
@@ -33,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: AppColors().textColor,
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 35),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       backgroundColor: AppColors().backgroundColor,
@@ -121,15 +120,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
+              const SizedBox(height: 35),
+              Text(
+                "Продолжить без регистрации",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors().darkTextColor,
+                ),
+              ),
+              const SizedBox(height: 35),
               Text(
                 "Продолжая, вы соглашаетесь с политикой конфиденциальности",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
-                  color: AppColors().grayTextColor,
+                  color: AppColors().inactiveColor,
                 ),
               ),
+              const SizedBox(height: 15),
             ],
           ),
         ),

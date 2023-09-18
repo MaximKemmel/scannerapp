@@ -24,8 +24,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
+      //crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -357,7 +357,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: GoogleFonts.inter(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
-                        color: AppColors().actionColor,
+                        color: AppColors().exitColor,
                       ),
                     ),
                   ),

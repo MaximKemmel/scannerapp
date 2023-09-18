@@ -281,7 +281,7 @@ class _FilesPageState extends State<FilesPage> {
                     const SizedBox(height: 10),
                   ],
                 ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 25),
             ],
           ),
         ),

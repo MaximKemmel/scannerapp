@@ -57,6 +57,12 @@ class _HomeScreenState extends State<HomeScreen> {
           : AppBar(
               surfaceTintColor: Colors.transparent,
               backgroundColor: AppColors().backgroundColor,
+              shape: selectedTab != 0 ? Border(
+                bottom: BorderSide(
+                  color: AppColors().inactiveColor,
+                  width: 1
+                ),
+              ) : null,
               title: Text(
                 pageNames[selectedTab],
                 style: GoogleFonts.inter(
@@ -118,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: isSearchFieldVisible
                                         ? AppColors().inactiveColor
                                         : Colors.transparent,
-                                    width: isSearchFieldVisible ? 1 : 0,
+                                    width: 0,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
@@ -127,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: isSearchFieldVisible
                                         ? AppColors().inactiveColor
                                         : Colors.transparent,
-                                    width: isSearchFieldVisible ? 1 : 0,
+                                    width: 0,
                                   ),
                                 ),
                                 labelText: '',
@@ -169,96 +175,164 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedTab == 2 ? EdgeInsets.zero : const EdgeInsets.all(15.0),
         child: pages[selectedTab],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: selectedTab < 2
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                FloatingActionButton(
-                  heroTag: "photo_btn",
-                  shape: const CircleBorder(),
-                  backgroundColor: AppColors().actionColor,
-                  onPressed: () {},
-                  child: Image.asset('assets/png/photo.png'),
-                ),
-                const SizedBox(width: 8),
-                FloatingActionButton(
-                  heroTag: "image_btn",
-                  shape: const CircleBorder(),
-                  backgroundColor: AppColors().actionColor,
-                  onPressed: () {},
-                  child: Image.asset('assets/png/image.png'),
-                ),
-              ],
+          ? FloatingActionButton(
+              heroTag: "photo_btn",
+              shape: const CircleBorder(),
+              backgroundColor: AppColors().actionColor,
+              onPressed: () {},
+              child: Image.asset('assets/png/photo.png'),
             )
           : null,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors().backgroundColor,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: selectedTab,
-        selectedItemColor: AppColors().darkTextColor,
-        selectedLabelStyle: GoogleFonts.inter(
-          fontWeight: FontWeight.w500,
-          fontSize: 10,
-          color: AppColors().actionColor,
+      bottomNavigationBar: BottomAppBar(
+        height: 60,
+        padding: EdgeInsets.zero,
+        surfaceTintColor: Colors.transparent,
+        notchMargin: 0,
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors().backgroundColor,
+            border: Border(
+              top: BorderSide(
+                width: 1,
+                color: AppColors().inactiveColor,
+              ),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedTab = 0;
+                      isSearchFieldVisible = false;
+                    });
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.24,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5.0),
+                          child: Image.asset(selectedTab == 0 ? 'assets/png/home_active.png' : 'assets/png/home.png'),
+                        ),
+                        Text(
+                          "Главная",
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: selectedTab == 0 ? AppColors().darkTextColor : AppColors().grayTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedTab = 1;
+                      isSearchFieldVisible = false;
+                    });
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.24,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5.0),
+                          child: Image.asset(selectedTab == 1 ? 'assets/png/files_active.png' : 'assets/png/files.png'),
+                        ),
+                        Text(
+                          "Файлы",
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: selectedTab == 1 ? AppColors().darkTextColor : AppColors().grayTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const Expanded(
+                child: SizedBox(),
+              ),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedTab = 2;
+                      isSearchFieldVisible = false;
+                    });
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.24,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5.0),
+                          child: Image.asset(selectedTab == 2 ? 'assets/png/premium.png' : 'assets/png/premium.png'),
+                        ),
+                        Text(
+                          "Премиум",
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: selectedTab == 2 ? AppColors().darkTextColor : AppColors().grayTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedTab = 3;
+                      isSearchFieldVisible = false;
+                    });
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.24,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5.0),
+                          child: Image.asset(selectedTab == 3 ? 'assets/png/settings_active.png' : 'assets/png/settings.png'),
+                        ),
+                        Text(
+                          "Настройки",
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: selectedTab == 3 ? AppColors().darkTextColor : AppColors().grayTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-        unselectedLabelStyle: GoogleFonts.inter(
-          fontWeight: FontWeight.w500,
-          fontSize: 10,
-          color: AppColors().grayTextColor,
-        ),
-        items: [
-          BottomNavigationBarItem(
-            activeIcon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/home_active.png'),
-            ),
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/home.png'),
-            ),
-            label: "Главная",
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/files_active.png'),
-            ),
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/files.png'),
-            ),
-            label: "Файлы",
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/premium.png'),
-            ),
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/premium.png'),
-            ),
-            label: "Премиум",
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/settings_active.png'),
-            ),
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 5.0),
-              child: Image.asset('assets/png/settings.png'),
-            ),
-            label: "Настройки",
-          ),
-        ],
-        onTap: (index) {
-          if (selectedTab == index) return;
-          setState(() {
-            selectedTab = index;
-          });
-        },
       ),
     );
   }

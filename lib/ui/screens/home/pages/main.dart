@@ -11,6 +11,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
+  late int currentTab;
+
+  @override
+  void initState() {
+    currentTab = 0;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 2, vsync: this);
@@ -25,8 +33,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             child: TabBar(
               controller: tabController,
               physics: const ClampingScrollPhysics(),
-              labelColor: AppColors().backgroundColor,
-              unselectedLabelColor: AppColors().actionColor,
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.tab,
               labelPadding: const EdgeInsets.symmetric(horizontal: 5),
@@ -34,8 +40,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               indicatorWeight: 0,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: AppColors().actionColor,
               ),
+              onTap: (index) {
+                setState(() {
+                  currentTab = index;
+                });
+              },
               dividerColor: Colors.transparent,
               tabs: [
                 Tab(
@@ -43,10 +53,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                        color: AppColors().actionColor,
-                        width: 1,
-                      ),
+                      color: currentTab == 1 ? AppColors().actionLightColor : AppColors().actionColor,
                     ),
                     child: Center(
                       child: Text(
@@ -54,6 +61,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
+                          color: currentTab == 1 ? AppColors().actionColor : AppColors().backgroundColor,
                         ),
                       ),
                     ),
@@ -65,10 +73,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                        color: AppColors().actionColor,
-                        width: 1,
-                      ),
+                      color: currentTab == 0 ? AppColors().actionLightColor : AppColors().actionColor,
                     ),
                     child: Center(
                       child: Text(
@@ -76,6 +81,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
+                          color: currentTab == 0 ? AppColors().actionColor : AppColors().backgroundColor,
                         ),
                       ),
                     ),
@@ -239,7 +245,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         const SizedBox(height: 10),
                       ],
                     ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 25),
                 ],
               ),
             ],

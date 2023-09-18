@@ -23,6 +23,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      makePage('assets/png/onboard_one.png', context),
+      makePage('assets/png/onboard_two.png', context),
+      makePage('assets/png/onboard_three.png', context),
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -35,30 +41,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Заголовок",
-                          style: GoogleFonts.inter(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors().textColor,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          "Текст описание в несколько строк о приложении его преимуществах и тд.",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors().textColor,
-                          ),
-                        ),
-                        const SizedBox(height: 40),
-                      ],
-                    );
+                    return pages[index];
                   },
                   onPageChanged: (index) {
                     setState(() {
@@ -161,4 +144,33 @@ class _OnboardScreenState extends State<OnboardScreen> {
       ),
     );
   }
+}
+
+Widget makePage(String imageAsset, BuildContext context) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      Image.asset(imageAsset, height: MediaQuery.of(context).size.height * 0.4),
+      const SizedBox(height: 35),
+      Text(
+        "Заголовок",
+        style: GoogleFonts.inter(
+          fontSize: 24,
+          fontWeight: FontWeight.w500,
+          color: AppColors().textColor,
+        ),
+      ),
+      const SizedBox(height: 20),
+      Text(
+        "Текст описание в несколько строк о приложении его преимуществах и тд.",
+        textAlign: TextAlign.center,
+        style: GoogleFonts.inter(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: AppColors().textColor,
+        ),
+      ),
+      const SizedBox(height: 40),
+    ],
+  );
 }
