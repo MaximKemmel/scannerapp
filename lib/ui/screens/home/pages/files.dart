@@ -2,15 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../theme/color.dart';
+import '../widgets/popup.dart';
 
 class FilesPage extends StatefulWidget {
-  const FilesPage({super.key});
+  final Function(int, String) onChangeLevel;
+  const FilesPage({super.key, required this.onChangeLevel});
 
   @override
   State<FilesPage> createState() => _FilesPageState();
 }
 
-class _FilesPageState extends State<FilesPage> {
+class _FilesPageState extends State<FilesPage> with TickerProviderStateMixin {
+  late AnimationController filterAnimationController;
+  late Animation filterAnimation;
+  late int level;
+
+  @override
+  void initState() {
+    filterAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+    );
+    filterAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: filterAnimationController,
+        curve: Curves.easeOut,
+      ),
+    );
+    level = 0;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,7 +85,7 @@ class _FilesPageState extends State<FilesPage> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            color: AppColors().inactiveColor),
+                                            color: AppColors().inactiveColor,),
                                       ),
                                     ),
                                   ),
@@ -151,7 +173,7 @@ class _FilesPageState extends State<FilesPage> {
                   height: 40,
                   child: IconButton(
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed: showFilterPopup,
                     icon: Image.asset('assets/png/filter.png'),
                   ),
                 ),
@@ -164,10 +186,16 @@ class _FilesPageState extends State<FilesPage> {
           child: ListView(
             children: [
               for (int i = 0; i < 2; i++)
-                Column(
+                if (level == 0) Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      borderRadius: BorderRadius.circular(15),
+                      onTap: () {
+                        widget.onChangeLevel(1, "Название папки");
+                        setState(() {
+                          level = 1;
+                        });
+                      },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 5,
@@ -286,6 +314,171 @@ class _FilesPageState extends State<FilesPage> {
           ),
         ),
       ],
+    );
+  }
+
+  void showFilterPopup() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.transparent,
+      builder: (context) {
+        return PopupContent(
+          key: null,
+          position: Offset(MediaQuery.of(context).size.width - 25, 100),
+          content: SizedBox(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:[
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: (){},
+                      borderRadius: BorderRadius.circular(5),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              "По алфавиту А-Я",
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: AppColors().darkTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    height: 10,
+                    thickness: 1,
+                    indent: 0,
+                    endIndent: 0,
+                    color: AppColors().inactiveColor,
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: (){},
+                      borderRadius: BorderRadius.circular(5),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              "По алфавиту Я-А",
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: AppColors().darkTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    height: 10,
+                    thickness: 1,
+                    indent: 0,
+                    endIndent: 0,
+                    color: AppColors().inactiveColor,
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: (){},
+                      borderRadius: BorderRadius.circular(5),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              "По дате создания",
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: AppColors().darkTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    height: 10,
+                    thickness: 1,
+                    indent: 0,
+                    endIndent: 0,
+                    color: AppColors().inactiveColor,
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: (){},
+                      borderRadius: BorderRadius.circular(5),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              "По дате \nредактирования",
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: AppColors().darkTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    height: 10,
+                    thickness: 1,
+                    indent: 0,
+                    endIndent: 0,
+                    color: AppColors().inactiveColor,
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: (){},
+                      borderRadius: BorderRadius.circular(5),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              "По размеру",
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: AppColors().darkTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          animationController: filterAnimationController,
+          animation: filterAnimation,
+          marginLeft: MediaQuery.of(context).size.width * 0.425,
+        );
+      },
     );
   }
 }

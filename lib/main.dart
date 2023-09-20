@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scanner_app/ui/screens/splash/splash.dart';
 import 'package:scanner_app/ui/theme/color.dart';
 
-void main() {
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
