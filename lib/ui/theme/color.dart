@@ -6,6 +6,7 @@ class AppColors {
   final Color actionLightColor = const Color.fromRGBO(239, 242, 254, 1);
   final Color popupActionColor = const Color.fromRGBO(125, 131, 160, 1);
   final Color cameraColor = const Color.fromRGBO(24, 26, 32, 1);
+  final Color cameraButtonColor = const Color.fromRGBO(46, 51, 62, 1);
 
   final Color exitColor = const Color.fromRGBO(255, 75, 86, 1);
   final Color textFieldColor = const Color.fromRGBO(230, 234, 238, 1);
